@@ -14,14 +14,33 @@ th, td {
     </style>
     <meta charset="UTF-8">
     <title>Products</title>
+    <a th:href="@{/button}">Add product</a>
 </head>
 <body>
 <h1>Products</h1>
-<div th:each="product: ${products}">
-    <td th:text="${product.id}"></td>
-    <td th:text="${product.name}"></td>
-    <td th:text="${product.description}"></td>
-    <td th:text="${product.price}"></td>
-</div>
+<table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="product:${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.Name}"></td>
+        <td th:text="${product.Description}"></td>
+        <td th:text="${product.Price}"></td>
+        <td>
+            <a th:href="@{/deleteProduct(id=${product.id})}">Remove</a>
+
+            <a th:href="@{/viewProduct(id=${product.id})}">View</a>
+
+            <a th:href="@{/editProduct(id=${product.id})}">Edit</a>
+        </td>
+    </tr>
+</table>
+
+
 </body>
 </html>

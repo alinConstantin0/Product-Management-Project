@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ProductService {
@@ -26,7 +27,12 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public void editProduct(){
+    public ProductModel viewProduct(int id){
+        Optional<ProductModel> optionalProductModel= productRepository.findById(id);
+        return optionalProductModel.get();
+    }
 
+    public void editProduct(ProductModel editedModel){
+        productRepository.save(editedModel);
     }
 }
