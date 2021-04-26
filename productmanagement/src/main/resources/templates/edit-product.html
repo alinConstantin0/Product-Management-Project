@@ -6,13 +6,15 @@
 </head>
 <body>
 <form th:action="@{/edit-product}" th:object="${edited}">
-    <label for="fname">Name</label><br>
-    <input type="text" id="fname" name="name" th:field="*{Name}"><br>
+    <label for="lname">ID</label><br>
+    <input type="text" id="id" readonly name="id" th:field="*{id}"><br>
+    <label for="fname">Name:</label><br>
+    <input type="text" id="fname" name="fname" th:field="*{name}"><br>
     <label for="lname">Description:</label><br>
-    <input type="text" id="lname" name="description" th:field="*{Description}"><br><br>
+    <input type="text" id="lname" name="lname" th:field="*{description}"><br><br>
     <label for="lname">Price:</label><br>
-    <input type="text" id="price" name="price" th:field="*{Price}"><br><br>
-    <input type="submit" value="Edit product">
+    <input type="text" id="price" name="lname" th:field="*{price}"><br><br>
+    <input type="submit" value="Edit author">
 </form>
 </body>
 </html>
