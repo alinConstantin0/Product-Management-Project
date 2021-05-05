@@ -1,6 +1,8 @@
 package com.itschool.productmanagement.controller;
 
 import com.itschool.productmanagement.entities.ProductModel;
+import com.itschool.productmanagement.exceptions.DescriptionException;
+import com.itschool.productmanagement.exceptions.PriceException;
 import com.itschool.productmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,9 +33,19 @@ public class ProductController {
     }
 
     @GetMapping(path="add-product")
-    public String addProduct(@ModelAttribute ProductModel newProduct) {
-        productService.addNewProduct(newProduct);
-        return "redirect:/products";
+    public String addProduct(@ModelAttribute ProductModel newProduct, Model model) {
+        try {
+            productService.addNewProduct(newProduct);
+            return "redirect:/products";
+        } catch (PriceException priceException){
+            model.addAttribute("newProduct",newProduct);
+            model.addAttribute("priceError",priceException.getMessage());
+            return "add-product";
+        } catch (DescriptionException descriptionException) {
+            model.addAttribute("newProduct",newProduct);
+            model.addAttribute("descriptionError",descriptionException.getMessage());
+            return "add-product";
+        }
     }
 
     @GetMapping(path = "deleteProduct")

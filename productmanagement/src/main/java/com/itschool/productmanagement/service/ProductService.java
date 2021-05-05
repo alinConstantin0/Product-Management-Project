@@ -1,6 +1,8 @@
 package com.itschool.productmanagement.service;
 
 import com.itschool.productmanagement.entities.ProductModel;
+import com.itschool.productmanagement.exceptions.DescriptionException;
+import com.itschool.productmanagement.exceptions.PriceException;
 import com.itschool.productmanagement.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,7 +22,13 @@ public class ProductService {
     }
 
     public void addNewProduct(ProductModel productModel) {
-        productRepository.save(productModel);
+        if (productModel.getPrice()<=0) {
+            throw new PriceException("Price introduced it's not valid!");
+        } else if (productModel.getDescription().length()>50){
+            throw new DescriptionException("Description must be shorter than 50 characters!");
+        } else {
+            productRepository.save(productModel);
+        }
     }
 
     public void deleteProduct(int id) {

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+<h1>Categories</h1>
+<table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="product:${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.Name}"></td>
+        <td th:text="${product.Description}"></td>
+        <td th:text="${product.Price}"></td>
+        <td>
+            <a th:href="@{/deleteProduct(id=${product.id})}">Remove</a>
+
+            <a th:href="@{/viewProduct(id=${product.id})}">View</a>
+
+            <a th:href="@{/editProduct(id=${product.id})}">Edit</a>
+        </td>
+    </tr>
+</table>
+
+
+
+
+</body>
+</html>

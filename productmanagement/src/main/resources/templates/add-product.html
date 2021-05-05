@@ -7,11 +7,13 @@
 <body>
 <form th:action="@{/add-product}" th:object="${newProduct}">
     <label for="fname">Name</label><br>
-    <input type="text" id="fname" name="name" th:field="*{Name}"><br>
+    <input type="text" id="fname" name="name" th:field="*{name}"><br>
     <label for="lname">Description:</label><br>
-    <input type="text" id="lname" name="description" th:field="*{Description}"><br><br>
+    <input type="text" id="lname" name="description" th:field="*{description}">
+    <p th:text=${descriptionError}></p>
     <label for="lname">Price:</label><br>
-    <input type="text" id="price" name="price" th:field="*{Price}"><br><br>
+    <input type="text" id="price" name="price" th:field="*{price}">
+    <p th:text=${priceError}></p>
     <input type="submit" value="Add product">
 </form>
 </body>
