@@ -22,21 +22,19 @@ th, td {
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
+        <th>Products</th>
         <th>Action</th>
     </tr>
-    <tr th:each="product:${products}">
-        <td th:text="${product.id}"></td>
-        <td th:text="${product.Name}"></td>
-        <td th:text="${product.Description}"></td>
-        <td th:text="${product.Price}"></td>
+    <tr th:each="product:${categories}">
+        <td th:text="${category.id}"></td>
+        <td th:text="${category.name}"></td>
+        <td th:text="${category.productModel}"></td>
         <td>
-            <a th:href="@{/deleteProduct(id=${product.id})}">Remove</a>
+            <a th:href="@{/deleteCategory(id=${category.id})}">Remove</a>
 
-            <a th:href="@{/viewProduct(id=${product.id})}">View</a>
+            <a th:href="@{/viewCategory(id=${category.id})}">View</a>
 
-            <a th:href="@{/editProduct(id=${product.id})}">Edit</a>
+            <a th:href="@{/editCategory(id=${category.id})}">Edit</a>
         </td>
     </tr>
 </table>
