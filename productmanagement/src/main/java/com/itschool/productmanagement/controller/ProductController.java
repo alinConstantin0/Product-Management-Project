@@ -26,7 +26,7 @@ public class ProductController {
         return "products";
     }
 
-    @GetMapping(path = "button")
+    @GetMapping(path = "add-productB")
     public String addButton(Model model) {
         model.addAttribute("newProduct",new ProductModel());
         return "add-product";
