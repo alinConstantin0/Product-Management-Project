@@ -57,7 +57,7 @@ public class CategoryController {
     }
 
     @GetMapping("editCategory")
-    public String editCategory(@RequestParam("id") int id, Model model) {
+    public String editCategory(@RequestParam int id, Model model) {
         CategoryModel categoryModel = categoryService.viewCategory(id);
         model.addAttribute("editedCategory",categoryModel);
         return "edit-category";

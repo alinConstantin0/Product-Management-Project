@@ -18,6 +18,8 @@ th, td {
 </head>
 <body>
 <h1>Categories</h1>
+
+<a th:href="@{/add-categoryB}">Add category</a>
 <table style="width:100%">
     <tr>
         <th>ID</th>
@@ -25,7 +27,7 @@ th, td {
         <th>Products</th>
         <th>Action</th>
     </tr>
-    <tr th:each="product:${categories}">
+    <tr th:each="category:${categories}">
         <td th:text="${category.id}"></td>
         <td th:text="${category.name}"></td>
         <td th:text="${category.productModel}"></td>
@@ -35,6 +37,8 @@ th, td {
             <a th:href="@{/viewCategory(id=${category.id})}">View</a>
 
             <a th:href="@{/editCategory(id=${category.id})}">Edit</a>
+
+            <a th:href="@{/}">Add product to category</a>
         </td>
     </tr>
 </table>
