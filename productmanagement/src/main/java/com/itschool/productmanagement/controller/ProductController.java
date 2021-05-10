@@ -1,8 +1,10 @@
 package com.itschool.productmanagement.controller;
 
+import com.itschool.productmanagement.entities.CategoryModel;
 import com.itschool.productmanagement.entities.ProductModel;
 import com.itschool.productmanagement.exceptions.DescriptionException;
 import com.itschool.productmanagement.exceptions.PriceException;
+import com.itschool.productmanagement.service.CategoryService;
 import com.itschool.productmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping(path = "products")
     public String displayProducts(Model model ) {
@@ -29,6 +33,8 @@ public class ProductController {
     @GetMapping(path = "add-productB")
     public String addButton(Model model) {
         model.addAttribute("newProduct",new ProductModel());
+        List<CategoryModel> categoryModels = categoryService.viewAllCategories();
+        model.addAttribute("categories",categoryModels);
         return "add-product";
     }
 
@@ -65,6 +71,8 @@ public class ProductController {
     public String editProduct(@RequestParam int id,Model model){
         ProductModel productModel = productService.viewProduct(id);
         model.addAttribute("edited",productModel);
+        List<CategoryModel> categoryModels = categoryService.viewAllCategories();
+        model.addAttribute("categories",categoryModels);
         return "edit-product";
     }
 

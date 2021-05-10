@@ -6,8 +6,8 @@
 </head>
 <body>
 <form th:action="@{/add-category}" th:object="${newCategory}">
-    <label for="fname">Name</label><br>
-    <input type="text" id="fname" name="name" th:field="*{name}"><br>
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="name" th:field="*{name}"><br>
     <p th:text=${categoryNameException}></p>
     <input type="submit" value="Add category">
 </form>

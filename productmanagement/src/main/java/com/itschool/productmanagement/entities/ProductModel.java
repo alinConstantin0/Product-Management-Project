@@ -14,6 +14,9 @@ public class ProductModel {
     private String description;
     private double price;
 
+    @ManyToOne
+    private CategoryModel category;
+
     public int getId() {
         return id;
     }
@@ -44,5 +47,13 @@ public class ProductModel {
 
     public String getDescription() {
         return description;
+    }
+
+    public CategoryModel getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryModel category) {
+        this.category = category;
     }
 }

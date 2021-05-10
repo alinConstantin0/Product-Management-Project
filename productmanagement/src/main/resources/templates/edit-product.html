@@ -5,16 +5,23 @@
     <title>Editing product</title>
 </head>
 <body>
+<h2>Edit product</h2>
 <form th:action="@{/edit-product}" th:object="${edited}">
-    <label for="lname">ID</label><br>
+    <label for="id">ID</label><br>
     <input type="text" id="id" readonly name="id" th:field="*{id}"><br>
-    <label for="fname">Name:</label><br>
-    <input type="text" id="fname" name="fname" th:field="*{name}"><br>
-    <label for="lname">Description:</label><br>
-    <input type="text" id="lname" name="lname" th:field="*{description}"><br><br>
-    <label for="lname">Price:</label><br>
-    <input type="text" id="price" name="lname" th:field="*{price}"><br><br>
-    <input type="submit" value="Edit author">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" th:field="*{name}"><br>
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description" th:field="*{description}"><br><br>
+    <label for="price">Price:</label><br>
+    <input type="text" id="price" name="price" th:field="*{price}"><br><br>
+    <select name="category" id="category" th:field="*{category.id}">
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Edit product">
+
 </form>
 </body>
 </html>

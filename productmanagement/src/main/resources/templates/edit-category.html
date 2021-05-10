@@ -8,8 +8,8 @@
 <form th:action="@{/edit-category}" th:object="${editedCategory}">
     <label for="id">ID</label><br>
     <input type="text" id="id" readonly name="id" th:field="*{id}"><br>
-    <label for="fname">Name</label><br>
-    <input type="text" id="fname" name="name" th:field="*{name}"><br>
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="name" th:field="*{name}"><br>
     <p th:text=${categoryNameException}></p>
     <input type="submit" value="Edit category">
 </form>
