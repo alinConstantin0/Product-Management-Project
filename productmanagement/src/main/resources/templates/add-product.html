@@ -5,7 +5,8 @@
     <title>Adding product</title>
 </head>
 <body>
-<form th:action="@{/add-product}" th:object="${newProduct}">
+<!--onsubmit="setTimeout(function(){window.location.reload();},10);"-->
+<form th:action="@{/add-product}" th:object="${newProduct}" >
     <label for="name">Name</label><br>
     <input type="text" id="name" name="name" th:field="*{name}"><br>
     <label for="description">Description:</label><br>

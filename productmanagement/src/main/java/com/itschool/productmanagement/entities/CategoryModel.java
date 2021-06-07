@@ -23,12 +23,12 @@ public class CategoryModel {
         this.id = id;
     }
 
-    public List<ProductModel> getProductModel() {
+    public List<ProductModel> getProduct() {
         return product;
     }
 
-    public void setProductModel(List<ProductModel> productModel) {
-        this.product = productModel;
+    public void setProduct(List<ProductModel> product) {
+        this.product = product;
     }
 
     public String getName() {

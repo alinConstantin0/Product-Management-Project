@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-
     <style>
-table, th, td {
-  border: 1px solid black;
+#categories {
+  font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
+  width: 100%;
 }
-th, td {
-  padding: 5px;
+
+#categories td, #categories th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#categories tr:nth-child(even){background-color: #f2f2f2;}
+
+#categories tr:hover {background-color: #ddd;}
+
+#categories th {
+  padding-top: 12px;
+  padding-bottom: 12px;
   text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.header {
+  padding: 15px;
+  text-align: left;
+  background: #4CAF50;
+  color: white;
+  font-size: 15px;
+}
+
+.button {
+  background-color: darkseagreen;
+  border: 2px;
+  border-style: solid;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  color: green;
 }
 
     </style>
@@ -17,10 +55,14 @@ th, td {
     <title>Categories</title>
 </head>
 <body>
-<h1>Categories</h1>
+<div class="header">
+    <h1>Categories</h1>
+</div>
+<div class="button">
+    <a th:href="@{/add-categoryB}"><strong>ADD CATEGORY</strong></a>
+</div>
 
-<a th:href="@{/add-categoryB}">Add category</a>
-<table style="width:100%">
+<table id="categories" style="width:100%">
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -30,15 +72,15 @@ th, td {
     <tr th:each="category:${categories}">
         <td th:text="${category.id}"></td>
         <td th:text="${category.name}"></td>
-        <td th:text="${category.productModel}"></td>
+        <tr th:each="prod:${category.product}">
+            <td> <span th:text="${prod.name}">Products</span></td>
+        </tr>
         <td>
             <a th:href="@{/deleteCategory(id=${category.id})}">Remove</a>
 
             <a th:href="@{/viewCategory(id=${category.id})}">View</a>
 
             <a th:href="@{/editCategory(id=${category.id})}">Edit</a>
-
-
         </td>
     </tr>
 </table>

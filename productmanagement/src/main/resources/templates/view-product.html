@@ -3,11 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Product : </title>
+    <style>
+        body {
+        border: 10px solid cadetblue;
+        padding: 8px;
+        text-align: left;
+        background-color: white;
+        }
+        h2 {
+        padding: 8px;
+        background-color: #4CAF50;
+        }
+        h3 {
+        padding: 4px;
+        background-color: darkseagreen;
+        }
+        h4 {
+        padding: 4px;
+        background-color: darkseagreen;
+        }
+        h5 {
+        padding: 4px;
+        background-color: darkseagreen;
+        }
+    </style>
 </head>
 <body>
-<h2 th:text="${viewedProduct.id}"></h2>
-<h3 th:text="${viewedProduct.name}"></h3>
-<h3 th:text="${viewedProduct.description}"></h3>
-<h3 th:text="${viewedProduct.price}"></h3>
+<div class="body">
+<h2 class="h2" th:text="${viewedProduct.id}"></h2>
+<h3 class="h3" th:text="${viewedProduct.name}"></h3>
+<h3 class="h4" th:text="${viewedProduct.description}"></h3>
+<h3 class="h5" th:text="${viewedProduct.price}"></h3>
+</div>
 </body>
 </html>

@@ -1,8 +1,10 @@
 package com.itschool.productmanagement.controller;
 
 import com.itschool.productmanagement.entities.CategoryModel;
+import com.itschool.productmanagement.entities.ProductModel;
 import com.itschool.productmanagement.exceptions.CategoryNameException;
 import com.itschool.productmanagement.service.CategoryService;
+import com.itschool.productmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +19,15 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("categories")
     public String displayCategories(Model model) {
         List<CategoryModel> categoryModels = categoryService.viewAllCategories();
+        List<ProductModel> productModels = productService.viewAllProducts();
         model.addAttribute("categories",categoryModels);
+        model.addAttribute("products",productModels);
         return "categories";
     }
 

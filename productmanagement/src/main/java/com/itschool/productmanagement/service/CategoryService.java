@@ -26,10 +26,12 @@ public class CategoryService {
         } else {
             categoryRepository.save(categoryModel);
         }
+        System.out.println("Adding category.");
     }
 
     public void deleteCategory(int id) {
         categoryRepository.deleteById(id);
+        System.out.println("Removing category with ID : " + id);
     }
 
     public CategoryModel viewCategory(int id){
@@ -39,6 +41,7 @@ public class CategoryService {
 
     public void editCategory(CategoryModel categoryModel) {
         categoryRepository.save(categoryModel);
+        System.out.println("Editing category.");
     }
 
 }
